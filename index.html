@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tempua Kebun | Nature, Learning & Community</title>
+  <style>
+    :root {
+      --bg: #f6fbf7;
+      --surface: #ffffff;
+      --text: #1a2a20;
+      --muted: #5a6c61;
+      --accent: #2d8f56;
+      --accent-soft: #e3f5ea;
+      --accent-2: #0f6b95;
+      --shadow: 0 20px 50px rgba(20, 58, 37, 0.12);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 5%, #dff9e7 0, transparent 30%),
+        radial-gradient(circle at 85% 0%, #d7f0ff 0, transparent 35%),
+        var(--bg);
+      line-height: 1.6;
+    }
+
+    .container {
+      width: min(1100px, 92vw);
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(8px);
+      background: rgba(246, 251, 247, 0.85);
+      border-bottom: 1px solid rgba(45, 143, 86, 0.15);
+      z-index: 100;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-weight: 800;
+      letter-spacing: 0.4px;
+      color: var(--accent);
+      font-size: 1.15rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .hero {
+      padding: 4.8rem 0 3.2rem;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      line-height: 1.1;
+      margin: 0;
+    }
+
+    .hero p {
+      color: var(--muted);
+      margin: 1rem 0 1.5rem;
+      max-width: 60ch;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.4rem 0.75rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.85rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .cta {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 999px;
+      padding: 0.72rem 1.15rem;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-secondary {
+      background: #fff;
+      color: var(--accent-2);
+      border: 1px solid rgba(15, 107, 149, 0.25);
+    }
+
+    .hero-panel {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.25rem;
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .pill-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+    }
+
+    .pill {
+      padding: 0.4rem 0.7rem;
+      border-radius: 999px;
+      background: #f0f7f3;
+      color: #2e5a44;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    section {
+      padding: 1.2rem 0 3rem;
+    }
+
+    h2 {
+      font-size: clamp(1.5rem, 3.2vw, 2.2rem);
+      margin: 0 0 0.9rem;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      max-width: 70ch;
+      margin-bottom: 1.3rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: 0 10px 30px rgba(18, 52, 33, 0.09);
+      padding: 1rem;
+      border: 1px solid rgba(45, 143, 86, 0.09);
+    }
+
+    .card h3 {
+      margin: 0 0 0.45rem;
+      font-size: 1.05rem;
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+
+    .list {
+      margin: 0;
+      padding-left: 1.1rem;
+    }
+
+    footer {
+      margin-top: 1.5rem;
+      padding: 2rem 0 3rem;
+      border-top: 1px solid rgba(45, 143, 86, 0.15);
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 820px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 3.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">🌿 Tempua Kebun</div>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#animals">Animals</a>
+          <a href="#growing">Growing Systems</a>
+          <a href="#activities">Activities</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero" id="about">
+      <div>
+        <span class="badge">Community Nature Project</span>
+        <h1>Growing life, learning together at Tempua Kebun.</h1>
+        <p>
+          Tempua Kebun is a vibrant space where nature, education, and community come together.
+          As a participant, I help nurture our animals, vegetables, bees, and hydroponic systems while
+          sharing meaningful outdoor experiences with visitors and families.
+        </p>
+        <div class="cta">
+          <a class="btn btn-primary" href="#activities">Explore Activities</a>
+          <a class="btn btn-secondary" href="#contact">Get in Touch</a>
+        </div>
+      </div>
+      <aside class="hero-panel">
+        <strong>What you'll find here</strong>
+        <div class="pill-grid">
+          <span class="pill">🐇 Rabbit</span>
+          <span class="pill">🐢 Tortoise</span>
+          <span class="pill">🦔 Hedgehog</span>
+          <span class="pill">🦜 Parrots</span>
+          <span class="pill">🐟 Koi Fish</span>
+          <span class="pill">🐹 Guinea Pig</span>
+          <span class="pill">🐱 Cats</span>
+          <span class="pill">🥬 Vegetables</span>
+          <span class="pill">🐝 Bees</span>
+          <span class="pill">💧 Hydroponics</span>
+        </div>
+      </aside>
+    </section>
+
+    <section id="animals">
+      <h2>Our Animal Family</h2>
+      <p class="section-intro">We care for a diverse group of friendly animals and use each habitat as an opportunity to teach compassion, responsibility, and respect for living things.</p>
+      <div class="grid">
+        <article class="card"><h3>Rabbit</h3><p>Gentle companions that help visitors learn calm handling and proper feeding routines.</p></article>
+        <article class="card"><h3>Tortoise</h3><p>Slow and steady residents that demonstrate long-term care and habitat awareness.</p></article>
+        <article class="card"><h3>Hedgehog</h3><p>Small nocturnal friends that spark curiosity about wildlife behavior and safe interaction.</p></article>
+        <article class="card"><h3>Parrots</h3><p>Colorful and vocal birds that engage visitors with sound, movement, and enrichment play.</p></article>
+        <article class="card"><h3>Koi Fish</h3><p>Elegant fish in our pond ecosystem, showing the balance of water quality and feeding care.</p></article>
+        <article class="card"><h3>Guinea Pig</h3><p>Social, adorable pets that are ideal for introducing children to gentle animal care.</p></article>
+        <article class="card"><h3>Cats</h3><p>Playful garden guardians that add warmth and companionship around the farm area.</p></article>
+      </div>
+    </section>
+
+    <section id="growing">
+      <h2>Vegetables, Bees & Hydroponic Innovation</h2>
+      <p class="section-intro">Tempua Kebun combines traditional gardening with modern techniques, creating a productive and educational environment throughout the year.</p>
+      <div class="split">
+        <article class="card">
+          <h3>Vegetables & Seasonal Harvest</h3>
+          <ul class="list">
+            <li>Leafy greens, herbs, and local vegetables grown for fresh community use.</li>
+            <li>Hands-on learning about compost, soil care, and sustainable planting.</li>
+            <li>Harvest sessions that connect children and adults to healthy food sources.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Bees & Pollination</h3>
+          <ul class="list">
+            <li>Bee zones that support pollination across our flowers and crops.</li>
+            <li>Awareness activities on the role of bees in biodiversity and food systems.</li>
+            <li>Guided observation to appreciate bee behavior in a safe way.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Hydroponic Systems</h3>
+          <ul class="list">
+            <li><strong>Vertical hydroponics:</strong> stacked planting channels that maximize small spaces.</li>
+            <li><strong>Horizontal hydroponics:</strong> broad-flow rows ideal for easy maintenance and harvest.</li>
+            <li>Water-efficient methods that demonstrate smart agriculture for urban communities.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="activities">
+      <h2>Activities at Tempua Kebun</h2>
+      <div class="grid">
+        <article class="card"><h3>Animal Feeding Time</h3><p>Supervised feeding sessions for rabbits, guinea pigs, and selected animals.</p></article>
+        <article class="card"><h3>Garden Planting Workshops</h3><p>Learn how to sow seeds, care for seedlings, and maintain healthy vegetable plots.</p></article>
+        <article class="card"><h3>Hydroponic Demonstration</h3><p>Discover how vertical and horizontal hydroponic setups work in daily farm operations.</p></article>
+        <article class="card"><h3>Nature Education Tours</h3><p>Interactive tours for schools, families, and groups focused on ecology and farm life.</p></article>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <p class="section-intro">Interested in visiting, collaborating, or joining activities? Reach out through any of the channels below.</p>
+      <div class="split">
+        <article class="card">
+          <h3>Facebook Page</h3>
+          <p><a href="https://facebook.com/tempuakebun" target="_blank" rel="noopener">facebook.com/tempuakebun</a></p>
+        </article>
+        <article class="card">
+          <h3>Phone Number</h3>
+          <p><a href="tel:+60123456789">+60 12-345 6789</a></p>
+        </article>
+        <article class="card">
+          <h3>Email</h3>
+          <p><a href="mailto:hello@tempuakebun.my">hello@tempuakebun.my</a></p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Tempua Kebun • Built with care for nature, community, and future learners.
+    </div>
+  </footer>
+</body>
+</html>
